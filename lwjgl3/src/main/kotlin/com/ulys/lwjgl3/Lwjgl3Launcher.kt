@@ -1,9 +1,8 @@
 package com.ulys.lwjgl3
 
-import kotlin.jvm.JvmStatic
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application
-import com.ulys.GunungBerapiGame
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration
+import com.ulys.GunungBerapiGame
 
 /** Launches the desktop (LWJGL3) application.  */
 object Lwjgl3Launcher {
@@ -20,7 +19,7 @@ object Lwjgl3Launcher {
         get() {
             val configuration = Lwjgl3ApplicationConfiguration()
             configuration.setTitle("GunungBerapi")
-            configuration.setWindowedMode(640, 480)
+            configuration.setWindowedMode(960, 640)
             configuration.setWindowIcon("libgdx128.png", "libgdx64.png", "libgdx32.png", "libgdx16.png")
             return configuration
         }
