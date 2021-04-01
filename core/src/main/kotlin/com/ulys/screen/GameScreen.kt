@@ -1,9 +1,12 @@
 package com.ulys.screen
 
 import com.badlogic.ashley.core.PooledEngine
+import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.ScreenAdapter
+import com.badlogic.gdx.graphics.GL20
 import com.ulys.EntityFactory
 import com.ulys.systems.DebugSystem
+import com.ulys.systems.LavaFallSystem
 import com.ulys.systems.RenderingSystem
 
 class GameScreen : ScreenAdapter() {
@@ -13,15 +16,19 @@ class GameScreen : ScreenAdapter() {
 
     override fun show() {
         val systems = arrayOf(
+            LavaFallSystem(),
             RenderingSystem(),
             DebugSystem(),
         )
         systems.forEach { engine.addSystem(it) }
 
-        factory.addEntiti()
+        factory.addLavaBall()
     }
 
     override fun render(delta: Float) {
+        Gdx.gl.glClearColor(0f, 0f, 0f, 0f)
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT)
+
         engine.update(delta)
     }
 }
