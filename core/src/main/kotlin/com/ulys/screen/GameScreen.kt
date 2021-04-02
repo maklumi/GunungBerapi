@@ -16,6 +16,7 @@ class GameScreen : ScreenAdapter() {
 
     override fun show() {
         val systems = arrayOf(
+            CitySystem(),
             CleanUpSystem(),
             ArmySpawnerSystem(),
             LavaEmitterSystem(),

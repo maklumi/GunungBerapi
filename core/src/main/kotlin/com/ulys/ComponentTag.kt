@@ -12,3 +12,5 @@ val lavaBallTag = mapperFor<LavaBallTag>()
 class ArmyTag : Component
 
 val armyTag = mapperFor<ArmyTag>()
+
+class Building : Component

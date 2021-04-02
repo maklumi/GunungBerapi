@@ -14,15 +14,18 @@ class ArmySpawnerSystem : IteratingSystem(allOf(ArmySpawner::class, ArmyTag::cla
 
     private val armySpawners = Array<Entity>()
     private val random = Random()
+    private var count = 5
 
     override fun update(deltaTime: Float) {
         super.update(deltaTime)
+        if (count == 0) return
         for (spawner in armySpawners) {
             val asc = armySpawnerMapper[spawner]
             asc.elapsedTime += deltaTime
             if (asc.elapsedTime > asc.interval) {
                 addArmyOrCavalry(spawner)
                 asc.elapsedTime = 0f
+                count--
             }
         }
         armySpawners.clear()
