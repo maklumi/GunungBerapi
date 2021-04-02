@@ -27,3 +27,14 @@ class LavaEmitterComponent : Component {
 }
 
 val lavaEmitterMapper = mapperFor<LavaEmitterComponent>()
+
+class ArmySpawner : Component {
+    var direction = 1
+    var armySpeed = 2f
+    var isActive = false
+    var interval = 5f
+    var elapsedTime = 0f
+}
+
+val armySpawnerMapper = mapperFor<ArmySpawner>()
+

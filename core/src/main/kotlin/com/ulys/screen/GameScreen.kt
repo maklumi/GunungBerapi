@@ -7,10 +7,7 @@ import com.badlogic.gdx.ScreenAdapter
 import com.badlogic.gdx.graphics.GL20
 import com.ulys.ActionProcessor
 import com.ulys.EntityFactory
-import com.ulys.systems.DebugSystem
-import com.ulys.systems.LavaEmitterSystem
-import com.ulys.systems.LavaFallSystem
-import com.ulys.systems.RenderingSystem
+import com.ulys.systems.*
 
 class GameScreen : ScreenAdapter() {
 
@@ -19,8 +16,9 @@ class GameScreen : ScreenAdapter() {
 
     override fun show() {
         val systems = arrayOf(
+            ArmySpawnerSystem(),
             LavaEmitterSystem(),
-            LavaFallSystem(),
+            MovementSystem(),
             RenderingSystem(),
             DebugSystem(),
         )

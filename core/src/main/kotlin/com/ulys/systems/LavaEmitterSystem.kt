@@ -70,11 +70,12 @@ class LavaEmitterSystem : IteratingSystem(allOf(LavaEmitterComponent::class).get
         engine.add {
             entity {
                 with<Bounds> {
-                    bounds.set(0f, 0f, 2f, 5f)
+                    bounds.set(0f, 10f, 2f, 5f)
                 }
                 with<Velocity> {
                     speed.set(vel)
                 }
+                with<LavaBallTag>()
             }
         }
     }

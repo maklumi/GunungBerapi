@@ -3,14 +3,12 @@ package com.ulys.systems
 import com.badlogic.ashley.core.Entity
 import com.badlogic.ashley.systems.IteratingSystem
 import com.badlogic.gdx.math.Vector2
-import com.ulys.Bounds
-import com.ulys.Velocity
-import com.ulys.boundsMapper
-import com.ulys.velocityMapper
+import com.ulys.*
 import ktx.ashley.allOf
+import ktx.ashley.has
 import ktx.ashley.remove
 
-class LavaFallSystem : IteratingSystem(
+class MovementSystem : IteratingSystem(
     allOf(
         Velocity::class,
         Bounds::class
@@ -25,9 +23,11 @@ class LavaFallSystem : IteratingSystem(
         bc.bounds.getPosition(pos)
         val newPos = Vector2(pos.x + move.x, pos.y + move.y)
         bc.bounds.setPosition(newPos)
-        if (newPos.y < -10f) {
-            entity.remove<Velocity>()
-        }
+//        if (entity.has(lavaBallTag)) {
+//            if (newPos.y < -10f) {
+//                entity.remove<Velocity>()
+//            }
+//        }
     }
 
 }
