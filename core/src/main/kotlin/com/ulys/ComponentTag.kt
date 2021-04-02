@@ -13,4 +13,6 @@ class ArmyTag : Component
 
 val armyTag = mapperFor<ArmyTag>()
 
-class Building : Component
+class BuildingTag : Component
+
+val buildingTag = mapperFor<BuildingTag>()

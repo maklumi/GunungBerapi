@@ -21,6 +21,7 @@ class GameScreen : ScreenAdapter() {
             ArmySpawnerSystem(),
             LavaEmitterSystem(),
             MovementSystem(),
+            ArmyVsBuilding(),
             RenderingSystem(),
             DebugSystem(),
         )

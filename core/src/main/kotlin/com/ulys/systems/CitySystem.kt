@@ -2,15 +2,14 @@ package com.ulys.systems
 
 import com.badlogic.ashley.core.Entity
 import com.badlogic.ashley.systems.IteratingSystem
-import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.utils.Array
 import com.ulys.Bounds
-import com.ulys.Building
+import com.ulys.BuildingTag
 import ktx.ashley.allOf
 import ktx.ashley.entity
 import ktx.ashley.with
 
-class CitySystem : IteratingSystem(allOf(Building::class).get()) {
+class CitySystem : IteratingSystem(allOf(BuildingTag::class).get()) {
 
     private val buildings = Array<Entity>()
     private var isInitialized = false
@@ -41,7 +40,7 @@ class CitySystem : IteratingSystem(allOf(Building::class).get()) {
 
     private fun addBuildingComponent(x: Float, y: Float, boundW: Float, boundH: Float) {
         engine.entity {
-            with<Building>()
+            with<BuildingTag>()
             with<Bounds> {
                 bounds.set(x, y, boundW, boundH)
             }
