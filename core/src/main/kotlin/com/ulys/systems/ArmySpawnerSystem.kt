@@ -50,6 +50,7 @@ class ArmySpawnerSystem : IteratingSystem(allOf(ArmySpawner::class, ArmyTag::cla
                     speed.x = asc.direction * asc.armySpeed
                 }
                 with<ArmyTag>()
+                with<Health>()
             }
         } else {
             engine.entity {
@@ -61,6 +62,7 @@ class ArmySpawnerSystem : IteratingSystem(allOf(ArmySpawner::class, ArmyTag::cla
                     speed.x = asc.direction * asc.armySpeed
                 }
                 with<ArmyTag>()
+                with<Health>()
             }
         }
 

@@ -23,6 +23,7 @@ class GameScreen : ScreenAdapter() {
             MovementSystem(),
             ArmyVsBuilding(),
             RenderingSystem(),
+            HealthRenderSystem(),
             DebugSystem(),
         )
         systems.forEach { engine.addSystem(it) }

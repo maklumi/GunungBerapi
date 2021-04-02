@@ -38,3 +38,9 @@ class ArmySpawner : Component {
 
 val armySpawnerMapper = mapperFor<ArmySpawner>()
 
+class Health : Component {
+    var health = 1f
+    var maxHealth = 1f
+}
+
+val healthMapper = mapperFor<Health>()

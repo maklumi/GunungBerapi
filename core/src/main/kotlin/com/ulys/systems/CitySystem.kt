@@ -5,6 +5,7 @@ import com.badlogic.ashley.systems.IteratingSystem
 import com.badlogic.gdx.utils.Array
 import com.ulys.Bounds
 import com.ulys.BuildingTag
+import com.ulys.Health
 import ktx.ashley.allOf
 import ktx.ashley.entity
 import ktx.ashley.with
@@ -44,6 +45,7 @@ class CitySystem : IteratingSystem(allOf(BuildingTag::class).get()) {
             with<Bounds> {
                 bounds.set(x, y, boundW, boundH)
             }
+            with<Health>()
         }
     }
 }
