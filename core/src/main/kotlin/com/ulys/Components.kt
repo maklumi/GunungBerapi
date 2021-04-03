@@ -6,6 +6,7 @@ import com.badlogic.ashley.core.Component
 import com.badlogic.gdx.Input
 import com.badlogic.gdx.math.Rectangle
 import com.badlogic.gdx.math.Vector2
+import com.badlogic.gdx.utils.Pool
 import ktx.ashley.mapperFor
 
 class Bounds : Component {
@@ -15,8 +16,12 @@ class Bounds : Component {
 val boundsMapper = mapperFor<Bounds>()
 
 
-class Velocity : Component {
+class Velocity : Component, Pool.Poolable {
     val speed = Vector2()
+
+    override fun reset() {
+        speed.set(Vector2())
+    }
 }
 
 val velocityMapper = mapperFor<Velocity>()

@@ -31,7 +31,7 @@ class CitySystem : IteratingSystem(allOf(BuildingTag::class).get()) {
     private fun addInitialBuildings() {
         isInitialized = true
         addBuildingComponent(0f, -10f, 2f, 3f)
-        addBuildingComponent(1f, -1f, 2f, 2f)
+        addBuildingComponent(3f, -8f, 2f, 2f)
         addBuildingComponent(4f, -5f, 2f, 2f)
         addBuildingComponent(-1f, -3f, 2f, 2f)
         addBuildingComponent(-4f, -5f, 2f, 2f)

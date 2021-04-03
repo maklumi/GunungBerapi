@@ -5,6 +5,7 @@ import com.badlogic.ashley.systems.IteratingSystem
 import com.badlogic.gdx.math.Vector2
 import com.ulys.*
 import ktx.ashley.allOf
+import ktx.ashley.exclude
 import ktx.ashley.has
 import ktx.ashley.remove
 
@@ -12,7 +13,8 @@ class MovementSystem : IteratingSystem(
     allOf(
         Velocity::class,
         Bounds::class
-    ).get()
+    ).exclude(Kinematic::class)
+        .get()
 ) {
 
     override fun processEntity(entity: Entity, deltaTime: Float) {

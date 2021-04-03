@@ -31,10 +31,11 @@ class HealthRenderSystem : IteratingSystem(allOf(Health::class, Bounds::class).g
 
         val bc = boundsMapper[entity]
         val hc = healthMapper[entity]
-        val healthWidth = bc.bounds.width * (hc.health / hc.maxHealth)
+        val ratio = hc.health / hc.maxHealth
+        val healthWidth = bc.bounds.width * ratio
         filled.color = when {
-            healthWidth < 0.8f -> Color.YELLOW
-            healthWidth < 0.6f -> Color.RED
+            ratio in 0.6f..0.8f -> Color.YELLOW
+            ratio < 0.6f -> Color.RED
             else -> Color.GREEN
         }
         filled.rect(

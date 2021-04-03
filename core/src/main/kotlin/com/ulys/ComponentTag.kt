@@ -16,3 +16,5 @@ val armyTag = mapperFor<ArmyTag>()
 class BuildingTag : Component
 
 val buildingTag = mapperFor<BuildingTag>()
+
+class Kinematic : Component
