@@ -22,6 +22,7 @@ class GameScreen : ScreenAdapter() {
             LavaEmitterSystem(),
             MovementSystem(),
             Collision(),
+            AnimationSystem(),
             RenderingSystem(),
             HealthRenderSystem(),
             DebugSystem(),

@@ -7,10 +7,11 @@ import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
 import com.ulys.Bounds
+import com.ulys.DebugTag
 import com.ulys.boundsMapper
 import ktx.ashley.allOf
 
-class DebugSystem : IteratingSystem(allOf(Bounds::class).get()) {
+class DebugSystem : IteratingSystem(allOf(DebugTag::class, Bounds::class).get()) {
 
     private val renderer = ShapeRenderer()
     private lateinit var rs: RenderingSystem

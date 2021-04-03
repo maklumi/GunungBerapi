@@ -4,8 +4,11 @@ package com.ulys
 
 import com.badlogic.ashley.core.Component
 import com.badlogic.gdx.Input
+import com.badlogic.gdx.graphics.g2d.Animation
+import com.badlogic.gdx.graphics.g2d.TextureRegion
 import com.badlogic.gdx.math.Rectangle
 import com.badlogic.gdx.math.Vector2
+import com.badlogic.gdx.utils.ArrayMap
 import com.badlogic.gdx.utils.Pool
 import ktx.ashley.mapperFor
 
@@ -49,3 +52,28 @@ class Health : Component {
 }
 
 val healthMapper = mapperFor<Health>()
+
+class TextureComponent : Component {
+    var region: TextureRegion? = null
+}
+
+val textureMapper = mapperFor<TextureComponent>()
+
+class AnimationComponent : Component {
+    var animations = ArrayMap<String, Animation<TextureRegion>>()
+
+    fun addAnimation(stateName: String, animation: Animation<TextureRegion>): AnimationComponent {
+        animations.put(stateName, animation)
+        return this
+    }
+}
+
+val animationMapper = mapperFor<AnimationComponent>()
+
+class StateComponent : Component {
+    var state = "DEFAULT"
+    var time = 1 / 16f
+    var isLooping = true
+}
+
+val stateMapper = mapperFor<StateComponent>()

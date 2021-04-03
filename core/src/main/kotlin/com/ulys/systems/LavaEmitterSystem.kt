@@ -4,6 +4,8 @@ import com.badlogic.ashley.core.Engine
 import com.badlogic.ashley.core.Entity
 import com.badlogic.ashley.systems.IteratingSystem
 import com.badlogic.gdx.Input
+import com.badlogic.gdx.graphics.g2d.Animation
+import com.badlogic.gdx.graphics.g2d.TextureRegion
 import com.badlogic.gdx.math.Vector2
 import com.badlogic.gdx.utils.Array
 import com.badlogic.gdx.utils.ArrayMap
@@ -76,6 +78,11 @@ class LavaEmitterSystem : IteratingSystem(allOf(LavaEmitterComponent::class).get
                     speed.set(vel)
                 }
                 with<LavaBallTag>()
+                with<TextureComponent>()
+                with<AnimationComponent> {
+                    addAnimation("DEFAULT", Animation<TextureRegion>(1 / 16f, Assets.getLavaBallFrames()))
+                }
+                with<StateComponent>()
             }
         }
     }

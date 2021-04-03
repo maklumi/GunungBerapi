@@ -9,6 +9,7 @@ import com.ulys.screen.GameScreen
 class GunungBerapiGame : Game() {
     override fun create() {
         Gdx.app.logLevel = Application.LOG_DEBUG
+        Assets.load()
         setScreen(GameScreen())
     }
 }
