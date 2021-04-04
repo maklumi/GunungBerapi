@@ -48,7 +48,7 @@ class RenderingSystem : IteratingSystem(
         private const val PPM = 16.0f
         var FRUSTUM_WIDTH = Gdx.graphics.width / PPM
         var FRUSTUM_HEIGHT = Gdx.graphics.height / PPM
-        private const val PIXELS_TO_METRES = 1.0f / PPM
+        const val PIXELS_TO_METRES = 1.0f / PPM
         private val meterDimensions = Vector2()
 
         fun getScreenSizeInMeters(): Vector2 {

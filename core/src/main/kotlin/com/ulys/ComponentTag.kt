@@ -21,4 +21,4 @@ class Kinematic : Component
 
 class DebugTag : Component
 
-class CloudTag : Component
+class DontCleanTag : Component

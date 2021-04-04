@@ -14,7 +14,7 @@ class Cloud : IteratingSystem(
         StateComponent::class,
         AnimationComponent::class,
         Bounds::class,
-        CloudTag::class
+        DontCleanTag::class
     ).get()
 ) {
 
@@ -29,7 +29,7 @@ class Cloud : IteratingSystem(
             }
             with<StateComponent>()
             with<TextureComponent>()
-            with<CloudTag>()
+            with<DontCleanTag>()
         }
         engine.entity {
             with<Bounds> {

@@ -25,6 +25,7 @@ class GameScreen : ScreenAdapter() {
             AnimationSystem(),
             RenderingSystem(),
             HealthRenderSystem(),
+            Ombak(),
             DebugSystem(),
         )
         systems.forEach { engine.addSystem(it) }

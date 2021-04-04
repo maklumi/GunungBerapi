@@ -5,13 +5,13 @@ import com.badlogic.ashley.core.Entity
 import com.badlogic.ashley.systems.IteratingSystem
 import com.badlogic.gdx.math.Rectangle
 import com.ulys.Bounds
-import com.ulys.CloudTag
+import com.ulys.DontCleanTag
 import com.ulys.boundsMapper
 import ktx.ashley.*
 
 class CleanUpSystem : IteratingSystem(
     allOf(Bounds::class)
-        .exclude(CloudTag::class).get()
+        .exclude(DontCleanTag::class).get()
 ) {
 
     private val limit = Rectangle(
