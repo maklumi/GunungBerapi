@@ -3,6 +3,7 @@ package com.ulys
 import com.badlogic.gdx.assets.AssetManager
 import com.badlogic.gdx.assets.loaders.TextureLoader
 import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver
+import com.badlogic.gdx.audio.Sound
 import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.TextureAtlas
 import com.badlogic.gdx.graphics.g2d.TextureRegion
@@ -20,6 +21,7 @@ object Assets {
         am.load("sprites/disciple-45x51.png", Texture::class.java)
         am.load("sprites/mage-1-85x94.png", Texture::class.java)
         am.load("animations/ombak.atlas", TextureAtlas::class.java)
+        am.load("sfx/lava.mp3", Sound::class.java)
         am.finishLoading()
     }
 
@@ -93,5 +95,13 @@ object Assets {
 
     fun getOmbakFrames(): Array<TextureAtlas.AtlasRegion> {
         return am.get("animations/ombak.atlas", TextureAtlas::class.java).findRegions("ombak")
+    }
+
+    fun getBunyiLava(): Sound {
+        return am.get("sfx/lava.mp3", Sound::class.java)
+    }
+
+    fun dispose() {
+        am.dispose()
     }
 }

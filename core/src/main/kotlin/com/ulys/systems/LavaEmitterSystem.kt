@@ -19,6 +19,7 @@ class LavaEmitterSystem : IteratingSystem(allOf(LavaEmitterComponent::class).get
 
     private val emitterMap = ArrayMap<Int, Array<Entity>>()
     private val charges = ArrayMap<Int, Float>()
+    private lateinit var sfx: SoundPlayer
 
     override fun addedToEngine(engine: Engine) {
         super.addedToEngine(engine)
@@ -34,6 +35,7 @@ class LavaEmitterSystem : IteratingSystem(allOf(LavaEmitterComponent::class).get
                 emissionVelocity = Vector2(6f, -5f)
             }
         }
+        sfx = engine.getSystem(SoundPlayer::class.java)
     }
 
     override fun update(deltaTime: Float) {
@@ -48,6 +50,7 @@ class LavaEmitterSystem : IteratingSystem(allOf(LavaEmitterComponent::class).get
                     val emm = lec.emissionVelocity.cpy()
                     addLavaBall(Vector2(emm.x * currentCharge, emm.y))
                     charges.put(key, 0f)
+                    sfx.prosesBunyi(SoundPlayer.Sonar.LAVA)
                 }
                 ActionProcessor.clear()
             } else if (ActionProcessor.isKeyDown(key)) {
