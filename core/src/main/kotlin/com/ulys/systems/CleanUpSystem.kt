@@ -5,13 +5,14 @@ import com.badlogic.ashley.core.Entity
 import com.badlogic.ashley.systems.IteratingSystem
 import com.badlogic.gdx.math.Rectangle
 import com.ulys.Bounds
+import com.ulys.CloudTag
 import com.ulys.boundsMapper
-import ktx.ashley.add
-import ktx.ashley.allOf
-import ktx.ashley.entity
-import ktx.ashley.with
+import ktx.ashley.*
 
-class CleanUpSystem : IteratingSystem(allOf(Bounds::class).get()) {
+class CleanUpSystem : IteratingSystem(
+    allOf(Bounds::class)
+        .exclude(CloudTag::class).get()
+) {
 
     private val limit = Rectangle(
         -28f, -18f,

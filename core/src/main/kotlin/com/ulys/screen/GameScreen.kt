@@ -6,16 +6,16 @@ import com.badlogic.gdx.Input
 import com.badlogic.gdx.ScreenAdapter
 import com.badlogic.gdx.graphics.GL20
 import com.ulys.ActionProcessor
-import com.ulys.EntityFactory
 import com.ulys.systems.*
 
 class GameScreen : ScreenAdapter() {
 
     private val engine = PooledEngine()
-    private val factory = EntityFactory(engine)
 
     override fun show() {
         val systems = arrayOf(
+            Cloud(),
+            BosMage(),
             CitySystem(),
             CleanUpSystem(),
             ArmySpawnerSystem(),

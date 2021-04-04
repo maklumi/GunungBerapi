@@ -2,6 +2,8 @@ package com.ulys.systems
 
 import com.badlogic.ashley.core.Entity
 import com.badlogic.ashley.systems.IteratingSystem
+import com.badlogic.gdx.graphics.g2d.Animation
+import com.badlogic.gdx.graphics.g2d.TextureRegion
 import com.badlogic.gdx.utils.Array
 import com.ulys.*
 import ktx.ashley.addComponent
@@ -47,6 +49,10 @@ class Collision : IteratingSystem(
 
                     val hc = healthMapper[building] ?: continue
                     hc.health -= (deltaTime * 0.1f)
+                    if (hc.health < 1 / 8f) {
+                        val sc = stateMapper[building]
+                        sc.state = "DEAD"
+                    }
                     if (hc.health < 0f) {
                         hc.health = 1f
                         building.removeAll()

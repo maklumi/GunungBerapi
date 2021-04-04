@@ -1,7 +1,6 @@
 package com.ulys.systems
 
 import com.badlogic.ashley.core.Entity
-import com.badlogic.ashley.core.EntitySystem
 import com.badlogic.ashley.systems.IteratingSystem
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.OrthographicCamera
@@ -21,7 +20,7 @@ class RenderingSystem : IteratingSystem(
 ) {
 
     val camera = OrthographicCamera(FRUSTUM_WIDTH, FRUSTUM_HEIGHT)
-    val batch = SpriteBatch()
+    private val batch = SpriteBatch()
 
     override fun processEntity(entity: Entity, deltaTime: Float) {
         camera.update()
@@ -29,16 +28,18 @@ class RenderingSystem : IteratingSystem(
         batch.enableBlending()
         batch.begin()
 
-        val tc = textureMapper[entity] ?: return
-        val bc = boundsMapper[entity] ?: return
-        val lebar = tc.region?.regionWidth?.toFloat() ?: return
-        // draw lava
+        val tc = textureMapper[entity]
+        val bc = boundsMapper[entity]
+        if (null in arrayOf(tc, bc, tc.region)) {
+            batch.end()
+            return
+        }
         batch.draw(
             tc.region,
-            bc.bounds.x - bc.bounds.width / 2,
+            bc.bounds.x,
             bc.bounds.y,
-            bc.bounds.width * 2,
-            bc.bounds.height * 1.5f
+            bc.bounds.width,
+            bc.bounds.height
         )
         batch.end()
     }
@@ -47,7 +48,7 @@ class RenderingSystem : IteratingSystem(
         private const val PPM = 16.0f
         var FRUSTUM_WIDTH = Gdx.graphics.width / PPM
         var FRUSTUM_HEIGHT = Gdx.graphics.height / PPM
-        const val PIXELS_TO_METRES = 1.0f / PPM
+        private const val PIXELS_TO_METRES = 1.0f / PPM
         private val meterDimensions = Vector2()
 
         fun getScreenSizeInMeters(): Vector2 {

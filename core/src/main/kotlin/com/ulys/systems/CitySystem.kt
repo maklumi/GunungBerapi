@@ -2,10 +2,10 @@ package com.ulys.systems
 
 import com.badlogic.ashley.core.Entity
 import com.badlogic.ashley.systems.IteratingSystem
+import com.badlogic.gdx.graphics.g2d.Animation
+import com.badlogic.gdx.graphics.g2d.TextureRegion
 import com.badlogic.gdx.utils.Array
-import com.ulys.Bounds
-import com.ulys.BuildingTag
-import com.ulys.Health
+import com.ulys.*
 import ktx.ashley.allOf
 import ktx.ashley.entity
 import ktx.ashley.with
@@ -46,6 +46,12 @@ class CitySystem : IteratingSystem(allOf(BuildingTag::class).get()) {
                 bounds.set(x, y, boundW, boundH)
             }
             with<Health>()
+            with<TextureComponent>()
+            with<StateComponent>()
+            with<AnimationComponent> {
+                addAnimation("DEFAULT", Animation<TextureRegion>(1 / 4f, Assets.getDiscipleFrames()))
+                addAnimation("DEAD", Animation<TextureRegion>(1 / 7f, Assets.getDiscipleDeadFrames()))
+            }
         }
     }
 }

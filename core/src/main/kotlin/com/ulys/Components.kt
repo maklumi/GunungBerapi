@@ -53,8 +53,12 @@ class Health : Component {
 
 val healthMapper = mapperFor<Health>()
 
-class TextureComponent : Component {
+class TextureComponent : Component, Pool.Poolable {
     var region: TextureRegion? = null
+
+    override fun reset() {
+        region = null
+    }
 }
 
 val textureMapper = mapperFor<TextureComponent>()
@@ -70,10 +74,16 @@ class AnimationComponent : Component {
 
 val animationMapper = mapperFor<AnimationComponent>()
 
-class StateComponent : Component {
+class StateComponent : Component, Pool.Poolable {
     var state = "DEFAULT"
     var time = 1 / 16f
     var isLooping = true
+
+    override fun reset() {
+        state = "DEFAULT"
+        time = 1 / 16f
+        isLooping = true
+    }
 }
 
 val stateMapper = mapperFor<StateComponent>()

@@ -17,7 +17,7 @@ class AnimationSystem : IteratingSystem(
         val ac = animationMapper[entity]
         val sc = stateMapper[entity]
         val tc = textureMapper[entity]
-        val region = ac.animations.get(sc.state).getKeyFrame(sc.time, sc.isLooping)
+        val region = ac.animations.get(sc.state)?.getKeyFrame(sc.time, sc.isLooping)
         tc.region = region
         sc.time += deltaTime
     }

@@ -20,3 +20,5 @@ val buildingTag = mapperFor<BuildingTag>()
 class Kinematic : Component
 
 class DebugTag : Component
+
+class CloudTag : Component
